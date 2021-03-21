@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+#define dump1090 service
+  dump1090:
+    image: "tjdean/dump1090"
+    command: "--quiet --net --write-json '/tmp/dump1090' --lat 53.117778 --lon -2.460707"
+    devices:
+      - "/dev/bus/usb"
+    volumes:
+      - ~/dump1090/data:/tmp/dump1090
+  skyaware:
+    image: "tjdean/piaware-skyaware"
+    ports:
+      - 8080:80
+    volumes:
+      - ~/dump1090/data:/usr/share/nginx/html/data

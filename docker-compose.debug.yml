@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  skyaware:
+    image: skyaware
+    build:
+      context: .
+      dockerfile: ./Dockerfile
